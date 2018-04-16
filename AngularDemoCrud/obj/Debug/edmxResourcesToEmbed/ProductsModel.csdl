@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProductDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="ProductsModel1.Product" />
+    <FunctionImport Name="GetProducts" ReturnType="Collection(ProductsModel1.GetProducts_Result)">
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="pageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetProduct" ReturnType="Collection(ProductsModel1.GetProduct_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="productCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="releaseDate" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="starRating" Type="Double" Nullable="false" />
+    <Property Name="imageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <ComplexType Name="GetProducts_Result">
+    <Property Type="String" Name="productName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="productCode" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="releaseDate" Nullable="true" MaxLength="500" />
+    <Property Type="Double" Name="price" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="500" />
+    <Property Type="Double" Name="starRating" Nullable="false" />
+    <Property Type="String" Name="imageUrl" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="productId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetProduct_Result">
+    <Property Type="String" Name="productName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="productCode" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="releaseDate" Nullable="true" MaxLength="500" />
+    <Property Type="Double" Name="price" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="500" />
+    <Property Type="Double" Name="starRating" Nullable="false" />
+    <Property Type="String" Name="imageUrl" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="productId" Nullable="false" />
+  </ComplexType>
+</Schema>

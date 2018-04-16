@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="500" />
+    <Property Name="productCode" Type="varchar" MaxLength="500" />
+    <Property Name="releaseDate" Type="varchar" MaxLength="500" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="starRating" Type="int" Nullable="false" />
+    <Property Name="imageUrl" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Function Name="GetProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="pageSize" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProductsModelStoreContainer">
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
